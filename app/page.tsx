@@ -95,18 +95,17 @@ export default function DashboardPage() {
       <Navbar
         activePage={activePage}
         onPageChange={setActivePage}
-        connectionStatus={connectionStatus}
       />
 
       {/* Main Content Area */}
       <main className="pt-20 md:pt-20 pb-24 md:pb-6 px-4 md:px-6 flex flex-col gap-6 min-h-screen max-w-[1600px] mx-auto relative z-10">
         {/* Page Header */}
-        <header className="flex justify-between items-center mb-2">
+        <header className="flex justify-between items-center mb-1">
           <div>
             <h2 className="text-2xl font-bold dark:text-white text-slate-900 tracking-tight transition-colors">
               {current.title}
             </h2>
-            <p className="text-xs font-mono dark:text-gray-500 text-slate-500">{current.subtitle}</p>
+            <p className="text-xs font-mono dark:text-gray-400 text-slate-500 font-medium mt-0.5">{current.subtitle}</p>
           </div>
         </header>
 
@@ -125,7 +124,7 @@ export default function DashboardPage() {
                 value={currentValues.totalEnergy.toFixed(2)}
                 unit="mWh"
                 accentColor="emerald"
-                valueClassName="text-emerald-500 dark:text-emerald-400 text-glow"
+                valueClassName="text-emerald-600 dark:text-emerald-400 text-glow"
                 onClick={() => openModal('energy')}
               />
 
@@ -152,7 +151,7 @@ export default function DashboardPage() {
               >
                 <h3 className="text-3xl font-bold dark:text-white text-slate-900 font-mono tracking-tight flex items-center mb-2">
                   <RollingOdometer value={currentValues.battVoltage.toFixed(2)} />
-                  <span className="text-sm dark:text-gray-500 text-slate-500 font-display font-normal unit-text">
+                  <span className="text-sm dark:text-gray-400 text-slate-500 font-display font-normal unit-text">
                     V
                   </span>
                 </h3>
@@ -176,20 +175,20 @@ export default function DashboardPage() {
               >
                 <div className="flex justify-between items-center">
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-500 text-slate-500 mb-1">
+                    <p className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-400 text-slate-500 font-medium mb-1">
                       Temp
                     </p>
-                    <h3 className="text-xl font-bold text-orange-500 dark:text-orange-400 font-mono flex items-center">
+                    <h3 className="text-xl font-bold text-orange-600 dark:text-orange-400 font-mono flex items-center">
                       <RollingOdometer value={currentValues.liveTemp.toFixed(1)} />
                       <span className="unit-text text-xs">°C</span>
                     </h3>
                   </div>
                   <div className="h-8 w-px dark:bg-gray-700 bg-slate-200" />
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-500 text-slate-500 mb-1">
+                    <p className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-400 text-slate-500 font-medium mb-1">
                       Hum
                     </p>
-                    <h3 className="text-xl font-bold text-sky-500 dark:text-sky-400 font-mono flex items-center">
+                    <h3 className="text-xl font-bold text-sky-600 dark:text-sky-400 font-mono flex items-center">
                       <RollingOdometer value={currentValues.liveHum.toFixed(1)} />
                       <span className="unit-text text-xs">%</span>
                     </h3>
@@ -222,7 +221,7 @@ export default function DashboardPage() {
                 value={currentValues.totalEnergy.toFixed(2)}
                 unit="mWh"
                 accentColor="emerald"
-                valueClassName="text-emerald-500 dark:text-emerald-400 text-glow"
+                valueClassName="text-emerald-600 dark:text-emerald-400 text-glow"
                 onClick={() => openModal('energy')}
               />
               <StatCard
@@ -275,19 +274,19 @@ export default function DashboardPage() {
                 onClick={() => openModal('env')}
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full border border-orange-500/30 bg-orange-500/10 flex items-center justify-center text-orange-400">
+                  <div className="w-12 h-12 rounded-full border border-orange-500/30 bg-orange-500/10 flex items-center justify-center text-orange-600 dark:text-orange-400">
                     <Thermometer size={24} />
                   </div>
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-500 text-slate-500">
+                    <p className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-400 text-slate-500 font-medium">
                       Ambient Temperature
                     </p>
-                    <p className="text-xs dark:text-gray-400 text-slate-600">DHT22 Sensor</p>
+                    <p className="text-xs dark:text-gray-400 text-slate-600 font-medium">DHT22 Sensor</p>
                   </div>
                 </div>
-                <h3 className="text-5xl font-bold text-orange-500 dark:text-orange-400 font-mono tracking-tight flex items-center">
+                <h3 className="text-5xl font-bold text-orange-600 dark:text-orange-400 font-mono tracking-tight flex items-center">
                   <RollingOdometer value={currentValues.liveTemp.toFixed(1)} className="text-5xl" />
-                  <span className="text-xl dark:text-gray-500 text-slate-500 font-display font-normal unit-text">
+                  <span className="text-xl dark:text-gray-400 text-slate-500 font-display font-normal unit-text">
                     °C
                   </span>
                 </h3>
@@ -298,7 +297,7 @@ export default function DashboardPage() {
                 onClick={() => openModal('env')}
               >
                 <div className="flex items-center gap-3 mb-6">
-                  <div className="w-12 h-12 rounded-full border border-sky-500/30 bg-sky-500/10 flex items-center justify-center text-sky-400">
+                  <div className="w-12 h-12 rounded-full border border-sky-500/30 bg-sky-500/10 flex items-center justify-center text-sky-600 dark:text-sky-400">
                     <svg
                       xmlns="http://www.w3.org/2000/svg"
                       width="24"
@@ -315,15 +314,15 @@ export default function DashboardPage() {
                     </svg>
                   </div>
                   <div>
-                    <p className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-500 text-slate-500">
+                    <p className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-400 text-slate-500 font-medium">
                       Relative Humidity
                     </p>
-                    <p className="text-xs dark:text-gray-400 text-slate-600">DHT22 Sensor</p>
+                    <p className="text-xs dark:text-gray-400 text-slate-600 font-medium">DHT22 Sensor</p>
                   </div>
                 </div>
-                <h3 className="text-5xl font-bold text-sky-500 dark:text-sky-400 font-mono tracking-tight flex items-center">
+                <h3 className="text-5xl font-bold text-sky-600 dark:text-sky-400 font-mono tracking-tight flex items-center">
                   <RollingOdometer value={currentValues.liveHum.toFixed(1)} className="text-5xl" />
-                  <span className="text-xl dark:text-gray-500 text-slate-500 font-display font-normal unit-text">
+                  <span className="text-xl dark:text-gray-400 text-slate-500 font-display font-normal unit-text">
                     %RH
                   </span>
                 </h3>
@@ -331,10 +330,10 @@ export default function DashboardPage() {
             </div>
 
             <div className="glass rounded-3xl p-6">
-              <h3 className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-500 text-slate-500 mb-4">
+              <h3 className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-400 text-slate-500 font-semibold mb-3">
                 Environmental Correlation
               </h3>
-              <p className="text-sm dark:text-gray-400 text-slate-600 leading-relaxed">
+              <p className="text-sm dark:text-gray-300 text-slate-700 leading-relaxed font-normal">
                 High humidity levels directly correlate with increased ionic migration in the
                 cellulose matrix, resulting in higher voltage output from the AERION harvesting
                 cell. The DHT22 sensor provides ±0.5°C temperature accuracy and ±2-5% humidity
@@ -351,7 +350,7 @@ export default function DashboardPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {/* Theme & Appearance */}
             <div className="glass rounded-3xl p-6">
-              <div className="flex items-center gap-2 mb-4">
+              <div className="flex items-center gap-2 mb-3">
                 <Sun className="text-amber-500" size={20} />
                 <h3 className="text-base font-bold dark:text-white text-slate-900">
                   Interface Theme
@@ -359,7 +358,7 @@ export default function DashboardPage() {
               </div>
               <p className="text-xs dark:text-gray-400 text-slate-600 mb-6 leading-relaxed">
                 Choose your preferred visual mode. Switch between the sleek dark command center
-                or the crisp, high-contrast light mode.
+                or the crisp, high-contrast light studio mode.
               </p>
 
               <div className="grid grid-cols-2 gap-4">
@@ -372,7 +371,7 @@ export default function DashboardPage() {
                     ${
                       theme === 'dark'
                         ? 'border-emerald-500 bg-emerald-500/10 shadow-lg shadow-emerald-500/10'
-                        : 'border-white/10 dark:border-white/10 border-slate-200 bg-white/5 dark:bg-white/5 hover:border-slate-400'
+                        : 'border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 hover:border-slate-400'
                     }
                   `}
                 >
@@ -403,7 +402,7 @@ export default function DashboardPage() {
                     ${
                       theme === 'light'
                         ? 'border-emerald-500 bg-emerald-500/10 shadow-lg shadow-emerald-500/10'
-                        : 'border-white/10 dark:border-white/10 border-slate-200 bg-white/5 dark:bg-white/5 hover:border-slate-400'
+                        : 'border-slate-200 dark:border-white/10 bg-slate-50 dark:bg-white/5 hover:border-slate-400'
                     }
                   `}
                 >
@@ -434,30 +433,30 @@ export default function DashboardPage() {
               </h3>
               <div className="space-y-4">
                 <div>
-                  <label className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-500 text-slate-500 block mb-2">
-                    Supabase Project URL
+                  <label className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-400 text-slate-500 font-semibold block mb-1.5">
+                    Supabase Realtime Stream
                   </label>
-                  <div className="dark:bg-white/5 bg-slate-100 rounded-xl px-4 py-3 border dark:border-white/5 border-slate-200 text-sm font-mono dark:text-gray-400 text-slate-700">
-                    {process.env.NEXT_PUBLIC_SUPABASE_URL || 'Connected via WebSocket'}
+                  <div className="dark:bg-white/5 bg-slate-100/90 rounded-xl px-4 py-3 border dark:border-white/5 border-slate-200 text-sm font-mono dark:text-gray-300 text-slate-800">
+                    Active WebSocket Subscription
                   </div>
                 </div>
                 <div>
-                  <label className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-500 text-slate-500 block mb-2">
-                    Data Stream Source
+                  <label className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-400 text-slate-500 font-semibold block mb-1.5">
+                    Data Stream Mode
                   </label>
-                  <div className="dark:bg-white/5 bg-slate-100 rounded-xl px-4 py-3 border dark:border-white/5 border-slate-200 text-sm font-mono dark:text-gray-400 text-slate-700">
-                    Live Telemetry Table (Zero Mock Data)
+                  <div className="dark:bg-white/5 bg-slate-100/90 rounded-xl px-4 py-3 border dark:border-white/5 border-slate-200 text-sm font-mono dark:text-gray-300 text-slate-800">
+                    Live Telemetry Ingestion (Pure Database Rows)
                   </div>
                 </div>
                 <div>
-                  <label className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-500 text-slate-500 block mb-2">
+                  <label className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-400 text-slate-500 font-semibold block mb-1.5">
                     Connection Status
                   </label>
-                  <div className="dark:bg-white/5 bg-slate-100 rounded-xl px-4 py-3 border dark:border-white/5 border-slate-200 text-sm font-mono">
+                  <div className="dark:bg-white/5 bg-slate-100/90 rounded-xl px-4 py-3 border dark:border-white/5 border-slate-200 text-sm font-mono">
                     <span
                       className={
                         connectionStatus === 'connected'
-                          ? 'text-emerald-500 dark:text-emerald-400 font-bold'
+                          ? 'text-emerald-600 dark:text-emerald-400 font-bold'
                           : 'text-red-500 font-bold'
                       }
                     >
@@ -476,39 +475,39 @@ export default function DashboardPage() {
         {activePage === 'information' && (
           <div className="space-y-6">
             <div className="glass rounded-3xl p-6">
-              <h3 className="text-base font-bold dark:text-white text-slate-900 mb-4">
+              <h3 className="text-base font-bold dark:text-white text-slate-900 mb-3">
                 About AERION
               </h3>
-              <p className="text-sm dark:text-gray-400 text-slate-600 leading-relaxed mb-4">
-                <span className="text-emerald-500 dark:text-emerald-400 font-bold">AERION</span>{' '}
+              <p className="text-sm dark:text-gray-300 text-slate-700 leading-relaxed mb-5">
+                <span className="text-emerald-600 dark:text-emerald-400 font-bold">AERION</span>{' '}
                 (Atmospheric Energy Recovery through Ionic-Engineered Cellulose) is an IoT-based
                 atmospheric energy harvesting system. It converts ambient moisture gradients into
                 electrical energy using cellulose substrates infused with KCl (Potassium Chloride)
                 salt.
               </p>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                <div className="dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200 text-center">
-                  <p className="text-[10px] font-mono uppercase dark:text-gray-500 text-slate-500 mb-1">
+                <div className="dark:bg-white/5 bg-slate-100/90 rounded-xl p-4 border dark:border-white/5 border-slate-200 text-center">
+                  <p className="text-[10px] font-mono uppercase dark:text-gray-400 text-slate-500 mb-1 font-semibold">
                     Platform
                   </p>
                   <p className="text-sm font-mono dark:text-white text-slate-900 font-bold">ESP32</p>
                 </div>
-                <div className="dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200 text-center">
-                  <p className="text-[10px] font-mono uppercase dark:text-gray-500 text-slate-500 mb-1">
+                <div className="dark:bg-white/5 bg-slate-100/90 rounded-xl p-4 border dark:border-white/5 border-slate-200 text-center">
+                  <p className="text-[10px] font-mono uppercase dark:text-gray-400 text-slate-500 mb-1 font-semibold">
                     Firmware
                   </p>
                   <p className="text-sm font-mono dark:text-white text-slate-900 font-bold">Rev 2.1</p>
                 </div>
-                <div className="dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200 text-center">
-                  <p className="text-[10px] font-mono uppercase dark:text-gray-500 text-slate-500 mb-1">
+                <div className="dark:bg-white/5 bg-slate-100/90 rounded-xl p-4 border dark:border-white/5 border-slate-200 text-center">
+                  <p className="text-[10px] font-mono uppercase dark:text-gray-400 text-slate-500 mb-1 font-semibold">
                     Device
                   </p>
                   <p className="text-sm font-mono dark:text-white text-slate-900 font-bold">
                     ESP32_AERION_01
                   </p>
                 </div>
-                <div className="dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200 text-center">
-                  <p className="text-[10px] font-mono uppercase dark:text-gray-500 text-slate-500 mb-1">
+                <div className="dark:bg-white/5 bg-slate-100/90 rounded-xl p-4 border dark:border-white/5 border-slate-200 text-center">
+                  <p className="text-[10px] font-mono uppercase dark:text-gray-400 text-slate-500 mb-1 font-semibold">
                     Protocol
                   </p>
                   <p className="text-sm font-mono dark:text-white text-slate-900 font-bold">
@@ -524,7 +523,7 @@ export default function DashboardPage() {
               </h3>
               <div className="space-y-3">
                 <div className="flex justify-between items-center py-2 border-b dark:border-white/5 border-slate-200">
-                  <span className="text-sm dark:text-gray-400 text-slate-600">
+                  <span className="text-sm dark:text-gray-300 text-slate-700">
                     Temperature & Humidity Sensor
                   </span>
                   <span className="text-sm font-mono dark:text-white text-slate-900 font-medium">
@@ -532,19 +531,19 @@ export default function DashboardPage() {
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b dark:border-white/5 border-slate-200">
-                  <span className="text-sm dark:text-gray-400 text-slate-600">Power Sensor</span>
+                  <span className="text-sm dark:text-gray-300 text-slate-700">Power Sensor</span>
                   <span className="text-sm font-mono dark:text-white text-slate-900 font-medium">
                     INA219 (I2C 0x40)
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b dark:border-white/5 border-slate-200">
-                  <span className="text-sm dark:text-gray-400 text-slate-600">Current Deadband</span>
+                  <span className="text-sm dark:text-gray-300 text-slate-700">Current Deadband</span>
                   <span className="text-sm font-mono dark:text-white text-slate-900 font-medium">
                     ±0.5 mA
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-2 border-b dark:border-white/5 border-slate-200">
-                  <span className="text-sm dark:text-gray-400 text-slate-600">
+                  <span className="text-sm dark:text-gray-300 text-slate-700">
                     Full Voltage Threshold
                   </span>
                   <span className="text-sm font-mono dark:text-white text-slate-900 font-medium">
@@ -552,7 +551,7 @@ export default function DashboardPage() {
                   </span>
                 </div>
                 <div className="flex justify-between items-center py-2">
-                  <span className="text-sm dark:text-gray-400 text-slate-600">
+                  <span className="text-sm dark:text-gray-300 text-slate-700">
                     Sensor Read Interval
                   </span>
                   <span className="text-sm font-mono dark:text-white text-slate-900 font-medium">
@@ -566,7 +565,7 @@ export default function DashboardPage() {
               <h3 className="text-base font-bold dark:text-white text-slate-900 mb-4">
                 Supabase Schema Reference
               </h3>
-              <pre className="dark:bg-black/50 bg-slate-900 text-emerald-400 rounded-xl p-4 text-xs font-mono overflow-x-auto">
+              <pre className="bg-[#0f172a] text-emerald-400 rounded-xl p-4 text-xs font-mono overflow-x-auto shadow-md">
 {`CREATE TABLE telemetry (
   id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,
   created_at TIMESTAMPTZ DEFAULT now(),

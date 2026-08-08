@@ -4,6 +4,7 @@
 //  DoodleBackground - Floating thematic doodles for AERION
 //  Features: Flash/Lightning, Water Droplets, K+/Cl- Ionic Nodes,
 //  Cellulose Micro-fibers, Battery Cells, and Wind Energy Waves.
+//  Optimized for high aesthetic appeal in both Light and Dark mode.
 // ============================================================================
 
 export default function DoodleBackground() {
@@ -11,7 +12,7 @@ export default function DoodleBackground() {
     <div className="fixed inset-0 pointer-events-none z-0 overflow-hidden select-none" aria-hidden="true">
       {/* 1. TOP-LEFT: Lightning / Energy Flash Burst */}
       <svg
-        className="absolute top-20 left-[5%] w-24 h-24 stroke-emerald-400/20 dark:stroke-emerald-400/15 fill-none animate-float-slow"
+        className="absolute top-20 left-[4%] w-24 h-24 stroke-emerald-600/30 dark:stroke-emerald-400/15 fill-none animate-float-slow transition-colors"
         viewBox="0 0 100 100"
       >
         {/* Lightning bolt doodle */}
@@ -28,7 +29,7 @@ export default function DoodleBackground() {
 
       {/* 2. TOP-RIGHT: Water Droplets & Moisture Condensation */}
       <svg
-        className="absolute top-16 right-[8%] w-28 h-28 stroke-sky-400/25 dark:stroke-sky-400/15 fill-sky-400/5 animate-pulse-slow"
+        className="absolute top-16 right-[7%] w-28 h-28 stroke-sky-600/30 dark:stroke-sky-400/15 fill-sky-500/5 animate-pulse-slow transition-colors"
         viewBox="0 0 100 100"
       >
         {/* Main water drop */}
@@ -46,18 +47,18 @@ export default function DoodleBackground() {
 
       {/* 3. MID-LEFT: K+ / Cl- Ionic Molecular Lattice */}
       <svg
-        className="absolute top-[42%] left-[2%] w-32 h-32 stroke-amber-400/20 dark:stroke-amber-400/15 fill-none animate-float-delayed"
+        className="absolute top-[42%] left-[2%] w-32 h-32 stroke-amber-600/30 dark:stroke-amber-400/15 text-amber-700 dark:text-amber-300 fill-none animate-float-delayed transition-colors"
         viewBox="0 0 120 120"
       >
         {/* Hexagonal ion ring */}
         <polygon points="60,20 95,40 95,80 60,100 25,80 25,40" strokeWidth="1.5" strokeDasharray="4 3" />
         {/* Center K+ ion node */}
-        <circle cx="60" cy="60" r="14" strokeWidth="2" className="fill-amber-400/10" />
+        <circle cx="60" cy="60" r="14" strokeWidth="2" className="fill-amber-500/10" />
         <text x="60" y="65" textAnchor="middle" fill="currentColor" fontSize="11" fontFamily="monospace" fontWeight="bold">
           K⁺
         </text>
         {/* Outer Cl- ion satellite */}
-        <circle cx="95" cy="40" r="10" strokeWidth="1.5" className="fill-sky-400/10" />
+        <circle cx="95" cy="40" r="10" strokeWidth="1.5" className="fill-sky-500/10" />
         <text x="95" y="44" textAnchor="middle" fill="currentColor" fontSize="9" fontFamily="monospace">
           Cl⁻
         </text>
@@ -67,7 +68,7 @@ export default function DoodleBackground() {
 
       {/* 4. MID-RIGHT: Bio-Cellulose Fiber Network & Eco Leaf Glyph */}
       <svg
-        className="absolute top-[48%] right-[3%] w-32 h-32 stroke-emerald-400/20 dark:stroke-emerald-400/15 fill-none animate-float-slow"
+        className="absolute top-[48%] right-[3%] w-32 h-32 stroke-emerald-600/30 dark:stroke-emerald-400/15 fill-none animate-float-slow transition-colors"
         viewBox="0 0 120 120"
       >
         {/* Leaf outline */}
@@ -84,7 +85,7 @@ export default function DoodleBackground() {
 
       {/* 5. BOTTOM-LEFT: Battery Storage & Capacitor Circuit Doodle */}
       <svg
-        className="absolute bottom-20 left-[7%] w-28 h-28 stroke-sky-400/20 dark:stroke-sky-400/15 fill-none animate-pulse-slow"
+        className="absolute bottom-20 left-[6%] w-28 h-28 stroke-sky-600/30 dark:stroke-sky-400/15 text-sky-700 dark:text-sky-300 fill-none animate-pulse-slow transition-colors"
         viewBox="0 0 100 100"
       >
         {/* Battery node */}
@@ -101,7 +102,7 @@ export default function DoodleBackground() {
 
       {/* 6. BOTTOM-RIGHT: Atmospheric Wave & Energy Harvest Ripples */}
       <svg
-        className="absolute bottom-24 right-[8%] w-36 h-28 stroke-emerald-400/20 dark:stroke-emerald-400/15 fill-none animate-float-delayed"
+        className="absolute bottom-24 right-[7%] w-36 h-28 stroke-emerald-600/30 dark:stroke-emerald-400/15 fill-none animate-float-delayed transition-colors"
         viewBox="0 0 140 100"
       >
         {/* Flowing moisture waves */}
@@ -127,11 +128,11 @@ export default function DoodleBackground() {
 
       {/* 7. CENTER TOP AMBIENT: Cosmic Spark & Energy Star */}
       <svg
-        className="absolute top-[8%] left-[48%] w-16 h-16 stroke-amber-400/20 dark:stroke-amber-400/15 fill-none animate-pulse-slow"
+        className="absolute top-[8%] left-[48%] w-16 h-16 stroke-amber-600/30 dark:stroke-amber-400/15 fill-none animate-pulse-slow transition-colors"
         viewBox="0 0 60 60"
       >
         <path d="M30 5 L30 55 M5 30 L55 30 M12 12 L48 48 M12 48 L48 12" strokeWidth="1.5" strokeLinecap="round" />
-        <circle cx="30" cy="30" r="4" strokeWidth="1.5" className="fill-amber-400/20" />
+        <circle cx="30" cy="30" r="4" strokeWidth="1.5" className="fill-amber-500/20" />
       </svg>
     </div>
   );
