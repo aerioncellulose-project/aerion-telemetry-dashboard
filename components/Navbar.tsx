@@ -13,8 +13,7 @@ import { NavPage } from '@/lib/types';
 import SystemUptime from './SystemUptime';
 
 // ============================================================================
-//  Navbar - Horizontal Top Bar with Official SVG Logo & Light/Dark styling
-//  Supabase bar removed and System Uptime positioned to the far right.
+//  Navbar - Horizontal Top Bar with Proportional Full-Width Layout
 // ============================================================================
 
 interface NavbarProps {
@@ -37,8 +36,8 @@ export default function Navbar({ activePage, onPageChange }: NavbarProps) {
           DESKTOP TOP BAR (hidden on mobile)
           ============================================ */}
       <header className="fixed top-0 left-0 right-0 z-50 hidden md:block">
-        <div className="bg-white/85 dark:bg-[#080808]/85 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/5 transition-colors duration-300 shadow-sm dark:shadow-none">
-          <div className="max-w-[1600px] mx-auto px-6 h-16 flex items-center justify-between">
+        <div className="bg-white/90 dark:bg-[#080808]/90 backdrop-blur-xl border-b border-slate-200/90 dark:border-white/5 transition-colors duration-300 shadow-sm dark:shadow-none">
+          <div className="w-full px-6 md:px-8 lg:px-12 h-16 flex items-center justify-between">
             {/* LEFT: Official Logo + Title */}
             <div
               className="flex items-center gap-3 cursor-pointer select-none"
@@ -51,14 +50,14 @@ export default function Navbar({ activePage, onPageChange }: NavbarProps) {
                   width={40}
                   height={40}
                   priority
-                  className="w-10 h-10 object-contain drop-shadow-[0_0_10px_rgba(16,185,129,0.4)] transition-transform hover:scale-105"
+                  className="w-10 h-10 object-contain drop-shadow-[0_0_10px_rgba(16,185,129,0.3)] transition-transform hover:scale-105"
                 />
               </div>
               <div>
                 <h1 className="text-base font-bold tracking-tight gradient-text leading-none">
                   AERION
                 </h1>
-                <p className="text-[9px] font-mono text-slate-500 dark:text-gray-400 uppercase tracking-widest mt-0.5 font-medium">
+                <p className="text-[9px] font-mono text-slate-600 dark:text-gray-400 uppercase tracking-widest mt-0.5 font-bold">
                   Live Telemetry
                 </p>
               </div>
@@ -79,8 +78,8 @@ export default function Navbar({ activePage, onPageChange }: NavbarProps) {
                       transition-colors duration-200 z-10 select-none
                       ${
                         isActive
-                          ? 'text-emerald-600 dark:text-emerald-400 font-semibold'
-                          : 'text-slate-600 dark:text-gray-400 hover:text-slate-950 dark:hover:text-gray-200'
+                          ? 'text-emerald-700 dark:text-emerald-400 font-bold'
+                          : 'text-slate-600 dark:text-gray-400 hover:text-slate-950 dark:hover:text-white'
                       }
                     `}
                   >
@@ -105,7 +104,7 @@ export default function Navbar({ activePage, onPageChange }: NavbarProps) {
               })}
             </nav>
 
-            {/* RIGHT: System Uptime (Rightmost Position) */}
+            {/* RIGHT: System Uptime (Anchored Right with Balanced Margin) */}
             <div className="flex items-center justify-end">
               <SystemUptime />
             </div>
@@ -117,7 +116,7 @@ export default function Navbar({ activePage, onPageChange }: NavbarProps) {
           MOBILE TOP BAR (visible only on mobile)
           ============================================ */}
       <header className="fixed top-0 left-0 right-0 z-50 md:hidden">
-        <div className="bg-white/90 dark:bg-[#080808]/90 backdrop-blur-xl border-b border-slate-200/80 dark:border-white/5 transition-colors duration-300 shadow-sm dark:shadow-none">
+        <div className="bg-white/95 dark:bg-[#080808]/90 backdrop-blur-xl border-b border-slate-200/90 dark:border-white/5 transition-colors duration-300 shadow-sm dark:shadow-none">
           <div className="px-4 h-14 flex items-center justify-between">
             {/* Logo + Title */}
             <div
@@ -130,11 +129,11 @@ export default function Navbar({ activePage, onPageChange }: NavbarProps) {
                 width={32}
                 height={32}
                 priority
-                className="w-8 h-8 object-contain drop-shadow-[0_0_8px_rgba(16,185,129,0.4)]"
+                className="w-8 h-8 object-contain drop-shadow-[0_0_8px_rgba(16,185,129,0.3)]"
               />
               <div>
                 <h1 className="text-sm font-bold gradient-text leading-none">AERION</h1>
-                <p className="text-[8px] font-mono text-slate-500 dark:text-gray-400 uppercase tracking-widest font-medium">
+                <p className="text-[8px] font-mono text-slate-600 dark:text-gray-400 uppercase tracking-widest font-bold">
                   Command Center
                 </p>
               </div>
@@ -150,7 +149,7 @@ export default function Navbar({ activePage, onPageChange }: NavbarProps) {
           MOBILE BOTTOM NAV (visible only on mobile)
           ============================================ */}
       <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
-        <div className="bg-white/90 dark:bg-[#080808]/90 backdrop-blur-xl border-t border-slate-200/80 dark:border-white/5 bottom-nav-safe transition-colors duration-300 shadow-lg dark:shadow-none">
+        <div className="bg-white/95 dark:bg-[#080808]/90 backdrop-blur-xl border-t border-slate-200/90 dark:border-white/5 bottom-nav-safe transition-colors duration-300 shadow-lg dark:shadow-none">
           <div className="flex items-center justify-around h-16">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -181,7 +180,7 @@ export default function Navbar({ activePage, onPageChange }: NavbarProps) {
                       size={20}
                       className={
                         isActive
-                          ? 'text-emerald-600 dark:text-emerald-400'
+                          ? 'text-emerald-700 dark:text-emerald-400'
                           : 'text-slate-400 dark:text-gray-500'
                       }
                     />
@@ -189,8 +188,8 @@ export default function Navbar({ activePage, onPageChange }: NavbarProps) {
                   <span
                     className={`text-[10px] font-medium ${
                       isActive
-                        ? 'text-emerald-600 dark:text-emerald-400 font-semibold'
-                        : 'text-slate-500 dark:text-gray-400'
+                        ? 'text-emerald-700 dark:text-emerald-400 font-bold'
+                        : 'text-slate-600 dark:text-gray-400'
                     }`}
                   >
                     {item.label}

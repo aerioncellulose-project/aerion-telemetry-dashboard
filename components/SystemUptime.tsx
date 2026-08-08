@@ -5,7 +5,7 @@ import RollingOdometer from './RollingOdometer';
 
 // ============================================================================
 //  SystemUptime - Telemetry session uptime counter with RollingOdometer
-//  Supports Light & Dark mode themes
+//  Supports Light & Dark mode themes with high contrast typography
 // ============================================================================
 
 interface SystemUptimeProps {
@@ -30,7 +30,7 @@ export default function SystemUptime({ compact = false }: SystemUptimeProps) {
   if (compact) {
     return (
       <div className="flex flex-col items-end">
-        <span className="text-[8px] font-mono uppercase tracking-widest text-slate-500 dark:text-gray-400">
+        <span className="text-[8px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 font-bold">
           Uptime
         </span>
         <div className="text-xs font-mono font-bold text-slate-900 dark:text-white tracking-wider">
@@ -41,9 +41,9 @@ export default function SystemUptime({ compact = false }: SystemUptimeProps) {
   }
 
   return (
-    <div className="flex items-center gap-3 pl-4 py-1 border-l border-slate-200 dark:border-white/10 text-right">
+    <div className="flex items-center gap-3 pl-4 py-1 border-l border-slate-300 dark:border-white/10 text-right">
       <div className="flex flex-col items-end">
-        <p className="text-[10px] font-mono uppercase tracking-widest text-slate-500 dark:text-gray-400 leading-tight">
+        <p className="text-[10px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 font-bold leading-tight">
           System Uptime
         </p>
         <div className="text-base font-mono font-bold text-slate-900 dark:text-white tracking-wider flex items-center">

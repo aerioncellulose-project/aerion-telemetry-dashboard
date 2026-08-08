@@ -138,10 +138,10 @@ export default function CandlestickChart({
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <div>
-          <h3 className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-500 text-slate-500">
+          <h3 className="text-[10px] font-mono uppercase tracking-widest text-slate-600 dark:text-gray-400 font-bold">
             Energy Flow Monitor (mW)
           </h3>
-          <p className="text-sm dark:text-gray-400 text-slate-600 mt-1">
+          <p className="text-sm text-slate-600 dark:text-gray-300 font-normal mt-1">
             Click to view detailed statistics (Min, Max, Avg)
           </p>
         </div>
@@ -162,7 +162,7 @@ export default function CandlestickChart({
             x2="100"
             y2="25"
             stroke="currentColor"
-            className="text-slate-300/40 dark:text-white/5"
+            className="text-slate-300/60 dark:text-white/5"
             strokeWidth="0.2"
           />
           <line
@@ -171,7 +171,7 @@ export default function CandlestickChart({
             x2="100"
             y2="50"
             stroke="currentColor"
-            className="text-slate-300/40 dark:text-white/5"
+            className="text-slate-300/60 dark:text-white/5"
             strokeWidth="0.2"
           />
           <line
@@ -180,7 +180,7 @@ export default function CandlestickChart({
             x2="100"
             y2="75"
             stroke="currentColor"
-            className="text-slate-300/40 dark:text-white/5"
+            className="text-slate-300/60 dark:text-white/5"
             strokeWidth="0.2"
           />
           <g ref={candleGroupRef} />
