@@ -3,7 +3,7 @@ import { Outfit, Space_Mono } from 'next/font/google';
 import './globals.css';
 
 // ============================================================================
-//  AERION Command Center - Root Layout with Vector Icon
+//  AERION Command Center - Root Layout with Transparent Vector Icon
 // ============================================================================
 
 const outfit = Outfit({
@@ -28,10 +28,11 @@ export const metadata: Metadata = {
   icons: {
     icon: [
       { url: '/logo.svg', type: 'image/svg+xml' },
-      { url: '/favicon.ico' },
+      { url: '/logo.png', type: 'image/png' },
+      { url: '/favicon.ico', sizes: 'any' },
     ],
     shortcut: '/logo.svg',
-    apple: '/logo.svg',
+    apple: '/apple-touch-icon.png',
   },
 };
 
@@ -44,7 +45,9 @@ export default function RootLayout({
     <html lang="en" className="dark scroll-smooth">
       <head>
         <link rel="icon" href="/logo.svg" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="/logo.svg" />
+        <link rel="icon" href="/logo.png" type="image/png" />
+        <link rel="alternate icon" href="/favicon.ico" />
+        <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
       </head>
       <body
         className={`
