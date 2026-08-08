@@ -61,10 +61,12 @@ export default function CandlestickChart({
     const group = candleGroupRef.current;
     if (!group) return;
 
-    const allCandles = [...candles.slice(-(NUM_CANDLES_VISIBLE))];
+    const allCandles = [...candles.slice(-NUM_CANDLES_VISIBLE)];
     if (liveCandle) allCandles.push(liveCandle);
     // Pad with nulls at the beginning to always have TOTAL_DOM_CANDLES elements
-    const paddedCandles = Array(TOTAL_DOM_CANDLES - allCandles.length).fill(null).concat(allCandles);
+    const paddedCandles = Array(TOTAL_DOM_CANDLES - allCandles.length)
+      .fill(null)
+      .concat(allCandles);
     const frac = isShifting ? shiftProgress : 0;
 
     for (let i = 0; i < TOTAL_DOM_CANDLES; i++) {
@@ -84,10 +86,11 @@ export default function CandlestickChart({
       const wick = g.querySelector('line')!;
       const body = g.querySelector('rect')!;
 
-      const yH = 100 - c.h;
-      const yL = 100 - c.l;
-      const yO = 100 - c.o;
-      const yC = 100 - c.c;
+      // Normalization factor for power (mW) to fit within 0-100 chart area
+      const yH = Math.max(5, Math.min(95, 100 - c.h * 10));
+      const yL = Math.max(5, Math.min(95, 100 - c.l * 10));
+      const yO = Math.max(5, Math.min(95, 100 - c.o * 10));
+      const yC = Math.max(5, Math.min(95, 100 - c.c * 10));
 
       wick.setAttribute('x1', '0');
       wick.setAttribute('x2', '0');
@@ -95,11 +98,12 @@ export default function CandlestickChart({
       wick.setAttribute('y2', String(yL));
 
       const bodyY = Math.min(yO, yC);
-      const bodyH = Math.max(Math.abs(yO - yC), 0.5);
+      const bodyH = Math.max(Math.abs(yO - yC), 0.8);
 
       body.setAttribute('x', String(-CANDLE_WIDTH / 2));
       body.setAttribute('y', String(bodyY));
       body.setAttribute('height', String(bodyH));
+      body.setAttribute('rx', '0.4');
 
       const isBullish = c.c >= c.o;
       const color = isBullish ? '#10b981' : '#ef4444';
@@ -134,10 +138,10 @@ export default function CandlestickChart({
       {/* Header */}
       <div className="flex justify-between items-center mb-4">
         <div>
-          <h3 className="text-[10px] font-mono uppercase tracking-widest text-gray-500">
+          <h3 className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-500 text-slate-500">
             Energy Flow Monitor (mW)
           </h3>
-          <p className="text-sm text-gray-400 mt-1">
+          <p className="text-sm dark:text-gray-400 text-slate-600 mt-1">
             Click to view detailed statistics (Min, Max, Avg)
           </p>
         </div>
@@ -152,9 +156,33 @@ export default function CandlestickChart({
           className="w-full h-full"
         >
           {/* Grid lines */}
-          <line x1="0" y1="25" x2="100" y2="25" stroke="rgba(255,255,255,0.05)" strokeWidth="0.2" />
-          <line x1="0" y1="50" x2="100" y2="50" stroke="rgba(255,255,255,0.05)" strokeWidth="0.2" />
-          <line x1="0" y1="75" x2="100" y2="75" stroke="rgba(255,255,255,0.05)" strokeWidth="0.2" />
+          <line
+            x1="0"
+            y1="25"
+            x2="100"
+            y2="25"
+            stroke="currentColor"
+            className="text-slate-300/40 dark:text-white/5"
+            strokeWidth="0.2"
+          />
+          <line
+            x1="0"
+            y1="50"
+            x2="100"
+            y2="50"
+            stroke="currentColor"
+            className="text-slate-300/40 dark:text-white/5"
+            strokeWidth="0.2"
+          />
+          <line
+            x1="0"
+            y1="75"
+            x2="100"
+            y2="75"
+            stroke="currentColor"
+            className="text-slate-300/40 dark:text-white/5"
+            strokeWidth="0.2"
+          />
           <g ref={candleGroupRef} />
         </svg>
       </div>

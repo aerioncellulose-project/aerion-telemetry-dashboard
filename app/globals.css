@@ -3,20 +3,35 @@
 @tailwind utilities;
 
 /* ============================================================================
-   AERION COMMAND CENTER - DESIGN SYSTEM
+   AERION COMMAND CENTER - DESIGN SYSTEM (Dark & Light Mode)
    ============================================================================ */
 
 :root {
   --color-bg: #050507;
   --color-text: #f1f5f9;
+  --color-text-secondary: #94a3b8;
+  --color-text-muted: #64748b;
+  --color-glass-bg: rgba(255, 255, 255, 0.03);
+  --color-glass-border: rgba(255, 255, 255, 0.08);
+  --color-glass-shadow: rgba(0, 0, 0, 0.4);
+  --color-header-bg: rgba(8, 8, 8, 0.85);
   --color-emerald: #10b981;
   --color-emerald-light: #34d399;
   --color-sky: #0ea5e9;
   --color-amber: #f59e0b;
   --color-orange: #f97316;
   --color-red: #ef4444;
-  --color-glass-bg: rgba(255, 255, 255, 0.03);
-  --color-glass-border: rgba(255, 255, 255, 0.08);
+}
+
+html.light {
+  --color-bg: #f4f7fb;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-glass-bg: rgba(255, 255, 255, 0.88);
+  --color-glass-border: rgba(15, 23, 42, 0.08);
+  --color-glass-shadow: rgba(15, 23, 42, 0.06);
+  --color-header-bg: rgba(255, 255, 255, 0.92);
 }
 
 /* ============================================================================
@@ -32,6 +47,7 @@ body {
   padding: 0;
   min-height: 100vh;
   position: relative;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* ============================================================================
@@ -43,9 +59,14 @@ body {
   border-radius: 50%;
   filter: blur(120px);
   z-index: 0;
-  opacity: 0.3;
+  opacity: 0.25;
   animation: float 15s ease-in-out infinite;
   pointer-events: none;
+}
+
+.light .orb {
+  opacity: 0.15;
+  filter: blur(140px);
 }
 
 .orb-1 {
@@ -76,34 +97,91 @@ body {
   }
 }
 
+@keyframes floatSlow {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(3deg);
+  }
+}
+
+@keyframes floatDelayed {
+  0%,
+  100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(14px) rotate(-3deg);
+  }
+}
+
+@keyframes pulseSlow {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.85;
+    transform: scale(1.06);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 8s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: floatDelayed 10s ease-in-out infinite;
+  animation-delay: 2s;
+}
+
+.animate-pulse-slow {
+  animation: pulseSlow 5s ease-in-out infinite;
+}
+
 /* ============================================================================
    GLASSMORPHISM PANELS
    ============================================================================ */
 
 .glass {
-  background: rgba(255, 255, 255, 0.03);
+  background: var(--color-glass-bg);
   backdrop-filter: blur(20px) saturate(180%);
   -webkit-backdrop-filter: blur(20px) saturate(180%);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.4);
-  transition: border-color 0.3s ease;
+  border: 1px solid var(--color-glass-border);
+  box-shadow: 0 8px 32px 0 var(--color-glass-shadow);
+  transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
 }
 
 .glass:hover {
-  border-color: rgba(16, 185, 129, 0.3);
+  border-color: rgba(16, 185, 129, 0.35);
 }
 
 .glass-interactive {
   cursor: pointer;
   transition: transform 0.3s cubic-bezier(0.22, 1, 0.36, 1),
     border-color 0.3s ease,
-    box-shadow 0.3s ease;
+    box-shadow 0.3s ease,
+    background 0.3s ease;
 }
 
 .glass-interactive:hover {
   transform: translateY(-3px);
   border-color: rgba(16, 185, 129, 0.5);
-  box-shadow: 0 12px 40px 0 rgba(16, 185, 129, 0.1);
+  box-shadow: 0 12px 40px 0 rgba(16, 185, 129, 0.12);
+}
+
+/* Light mode specific glass adjustments */
+.light .glass {
+  border: 1px solid rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 24px 0 rgba(15, 23, 42, 0.05);
+}
+
+.light .glass:hover {
+  border-color: rgba(16, 185, 129, 0.5);
+  box-shadow: 0 8px 30px 0 rgba(16, 185, 129, 0.15);
 }
 
 /* ============================================================================
@@ -112,6 +190,10 @@ body {
 
 .text-glow {
   text-shadow: 0 0 12px rgba(16, 185, 129, 0.8);
+}
+
+.light .text-glow {
+  text-shadow: 0 0 8px rgba(16, 185, 129, 0.4);
 }
 
 .gradient-text {
@@ -231,7 +313,7 @@ body {
    ============================================================================ */
 
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 5px;
 }
 
 ::-webkit-scrollbar-track {
@@ -239,14 +321,13 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(148, 163, 184, 0.25);
   border-radius: 4px;
 }
 
-/* Firefox scrollbar */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
+  scrollbar-color: rgba(148, 163, 184, 0.25) transparent;
 }
 
 /* ============================================================================
@@ -254,8 +335,13 @@ body {
    ============================================================================ */
 
 .nav-pill-bg {
-  background: rgba(16, 185, 129, 0.1);
-  border: 1px solid rgba(16, 185, 129, 0.2);
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.25);
+}
+
+.light .nav-pill-bg {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.3);
 }
 
 /* ============================================================================

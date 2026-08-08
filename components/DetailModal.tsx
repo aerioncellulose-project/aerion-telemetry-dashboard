@@ -7,7 +7,7 @@ import { ModalType, TelemetryStats } from '@/lib/types';
 
 // ============================================================================
 //  DetailModal - Framer Motion animated detail/analytics modal
-//  Replicates the reference HTML's modal with Min/Max/Avg analytics
+//  Supports Light & Dark mode themes
 // ============================================================================
 
 interface DetailModalProps {
@@ -59,33 +59,39 @@ export default function DetailModal({
           body: (
             <>
               <div className="grid grid-cols-3 gap-4">
-                <div className="bg-white/5 rounded-xl p-4 border border-white/5">
-                  <p className="text-[10px] font-mono uppercase text-gray-500 mb-1">Minimum</p>
-                  <p className="text-2xl font-bold text-red-400 font-mono">
+                <div className="dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200">
+                  <p className="text-[10px] font-mono uppercase dark:text-gray-500 text-slate-500 mb-1">
+                    Minimum
+                  </p>
+                  <p className="text-2xl font-bold text-red-500 dark:text-red-400 font-mono">
                     {powerStats.min.toFixed(2)}
-                    <span className="text-xs text-gray-500"> mW</span>
+                    <span className="text-xs dark:text-gray-500 text-slate-500"> mW</span>
                   </p>
                 </div>
-                <div className="bg-white/5 rounded-xl p-4 border border-white/5">
-                  <p className="text-[10px] font-mono uppercase text-gray-500 mb-1">Average</p>
-                  <p className="text-2xl font-bold text-sky-400 font-mono">
+                <div className="dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200">
+                  <p className="text-[10px] font-mono uppercase dark:text-gray-500 text-slate-500 mb-1">
+                    Average
+                  </p>
+                  <p className="text-2xl font-bold text-sky-500 dark:text-sky-400 font-mono">
                     {powerStats.avg.toFixed(2)}
-                    <span className="text-xs text-gray-500"> mW</span>
+                    <span className="text-xs dark:text-gray-500 text-slate-500"> mW</span>
                   </p>
                 </div>
-                <div className="bg-white/5 rounded-xl p-4 border border-white/5">
-                  <p className="text-[10px] font-mono uppercase text-gray-500 mb-1">Maximum</p>
-                  <p className="text-2xl font-bold text-emerald-400 font-mono">
+                <div className="dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200">
+                  <p className="text-[10px] font-mono uppercase dark:text-gray-500 text-slate-500 mb-1">
+                    Maximum
+                  </p>
+                  <p className="text-2xl font-bold text-emerald-500 dark:text-emerald-400 font-mono">
                     {powerStats.max.toFixed(2)}
-                    <span className="text-xs text-gray-500"> mW</span>
+                    <span className="text-xs dark:text-gray-500 text-slate-500"> mW</span>
                   </p>
                 </div>
               </div>
-              <div className="mt-4 bg-white/5 rounded-xl p-4 border border-white/5">
-                <p className="text-xs text-gray-400 leading-relaxed">
-                  Data represents the last {historyCount} polling intervals (2s each). 
-                  The live candlestick continuously forms based on real-time voltage and 
-                  current readings from the INA219 sensor.
+              <div className="mt-4 dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200">
+                <p className="text-xs dark:text-gray-400 text-slate-600 leading-relaxed">
+                  Data represents the last {historyCount} live telemetry polling intervals. The live
+                  candlestick continuously updates from real-time voltage and current readings from
+                  the INA219 sensor.
                 </p>
               </div>
             </>
@@ -98,27 +104,33 @@ export default function DetailModal({
           title: 'Total Harvested Energy',
           body: (
             <>
-              <div className="bg-white/5 rounded-xl p-4 border border-white/5 mb-4">
-                <p className="text-[10px] font-mono uppercase text-gray-500 mb-2">Current Total</p>
-                <p className="text-4xl font-bold text-emerald-400 text-glow font-mono">
+              <div className="dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200 mb-4">
+                <p className="text-[10px] font-mono uppercase dark:text-gray-500 text-slate-500 mb-2">
+                  Current Total
+                </p>
+                <p className="text-4xl font-bold text-emerald-500 dark:text-emerald-400 text-glow font-mono">
                   {currentValues.totalEnergy.toFixed(2)}{' '}
-                  <span className="text-lg text-gray-500">mWh</span>
+                  <span className="text-lg dark:text-gray-500 text-slate-500">mWh</span>
                 </p>
               </div>
-              <div className="space-y-2 text-sm text-gray-400">
+              <div className="space-y-2 text-sm dark:text-gray-400 text-slate-600">
                 <div className="flex justify-between">
                   <span>Energy Collected Today:</span>
-                  <span className="font-mono text-white">
+                  <span className="font-mono dark:text-white text-slate-900 font-bold">
                     {(currentValues.totalEnergy * 0.1).toFixed(2)} mWh
                   </span>
                 </div>
                 <div className="flex justify-between">
                   <span>Charge Cycles Contributed:</span>
-                  <span className="font-mono text-white">0.0042</span>
+                  <span className="font-mono dark:text-white text-slate-900 font-bold">
+                    0.0042
+                  </span>
                 </div>
                 <div className="flex justify-between">
                   <span>Material Status:</span>
-                  <span className="font-mono text-emerald-400">KCl Active</span>
+                  <span className="font-mono text-emerald-500 dark:text-emerald-400 font-bold">
+                    KCl Active
+                  </span>
                 </div>
               </div>
             </>
@@ -132,33 +144,37 @@ export default function DetailModal({
           body: (
             <>
               <div className="grid grid-cols-2 gap-4 mb-4">
-                <div className="bg-white/5 rounded-xl p-4 border border-white/5">
-                  <p className="text-[10px] font-mono uppercase text-gray-500 mb-1">Voltage</p>
-                  <p className="text-xl font-bold text-white font-mono">
+                <div className="dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200">
+                  <p className="text-[10px] font-mono uppercase dark:text-gray-500 text-slate-500 mb-1">
+                    Voltage
+                  </p>
+                  <p className="text-xl font-bold dark:text-white text-slate-900 font-mono">
                     {currentValues.battVoltage.toFixed(2)} V
                   </p>
                 </div>
-                <div className="bg-white/5 rounded-xl p-4 border border-white/5">
-                  <p className="text-[10px] font-mono uppercase text-gray-500 mb-1">Current</p>
-                  <p className="text-xl font-bold text-white font-mono">
+                <div className="dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200">
+                  <p className="text-[10px] font-mono uppercase dark:text-gray-500 text-slate-500 mb-1">
+                    Current
+                  </p>
+                  <p className="text-xl font-bold dark:text-white text-slate-900 font-mono">
                     {currentValues.liveCurrent.toFixed(2)} mA
                   </p>
                 </div>
               </div>
-              <div className="bg-white/5 rounded-xl p-4 border border-white/5">
+              <div className="dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200">
                 <div className="flex justify-between text-sm mb-2">
-                  <span className="text-gray-400">Charge Level</span>
-                  <span className="font-mono text-emerald-400">
+                  <span className="dark:text-gray-400 text-slate-600">Charge Level</span>
+                  <span className="font-mono text-emerald-500 dark:text-emerald-400 font-bold">
                     {currentValues.battPercent.toFixed(0)}%
                   </span>
                 </div>
-                <div className="w-full h-3 bg-gray-800 rounded-full overflow-hidden">
+                <div className="w-full h-3 dark:bg-gray-800 bg-slate-200 rounded-full overflow-hidden">
                   <div
                     className="h-full bg-gradient-to-r from-emerald-500 to-emerald-300 progress-bar"
                     style={{ width: `${currentValues.battPercent}%` }}
                   />
                 </div>
-                <p className="text-xs text-gray-500 mt-3">
+                <p className="text-xs dark:text-gray-500 text-slate-500 mt-3">
                   Protected by TP4056 module. Overcharge protection active at 4.20V.
                 </p>
               </div>
@@ -173,21 +189,25 @@ export default function DetailModal({
           body: (
             <>
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-white/5 rounded-xl p-4 border border-white/5 text-center">
-                  <p className="text-[10px] font-mono uppercase text-gray-500 mb-2">Temperature</p>
-                  <p className="text-3xl font-bold text-orange-400 font-mono">
+                <div className="dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200 text-center">
+                  <p className="text-[10px] font-mono uppercase dark:text-gray-500 text-slate-500 mb-2">
+                    Temperature
+                  </p>
+                  <p className="text-3xl font-bold text-orange-500 dark:text-orange-400 font-mono">
                     {currentValues.liveTemp.toFixed(1)}°C
                   </p>
                 </div>
-                <div className="bg-white/5 rounded-xl p-4 border border-white/5 text-center">
-                  <p className="text-[10px] font-mono uppercase text-gray-500 mb-2">Humidity</p>
-                  <p className="text-3xl font-bold text-sky-400 font-mono">
+                <div className="dark:bg-white/5 bg-slate-100 rounded-xl p-4 border dark:border-white/5 border-slate-200 text-center">
+                  <p className="text-[10px] font-mono uppercase dark:text-gray-500 text-slate-500 mb-2">
+                    Humidity
+                  </p>
+                  <p className="text-3xl font-bold text-sky-500 dark:text-sky-400 font-mono">
                     {currentValues.liveHum.toFixed(1)}%
                   </p>
                 </div>
               </div>
-              <p className="text-xs text-gray-400 mt-4 leading-relaxed">
-                High humidity levels directly correlate with increased ionic migration in the 
+              <p className="text-xs dark:text-gray-400 text-slate-600 mt-4 leading-relaxed">
+                High humidity levels directly correlate with increased ionic migration in the
                 cellulose matrix, resulting in higher voltage output.
               </p>
             </>
@@ -205,7 +225,7 @@ export default function DetailModal({
     <AnimatePresence>
       {isOpen && type && (
         <motion.div
-          className="fixed inset-0 z-[100] bg-black/70 backdrop-blur-md flex items-center justify-center p-6"
+          className="fixed inset-0 z-[100] bg-black/60 dark:bg-black/70 backdrop-blur-md flex items-center justify-center p-6"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -226,16 +246,16 @@ export default function DetailModal({
             {/* Header */}
             <div className="flex justify-between items-start mb-6">
               <div>
-                <p className="text-[10px] font-mono uppercase tracking-widest text-emerald-400 mb-2">
+                <p className="text-[10px] font-mono uppercase tracking-widest text-emerald-500 dark:text-emerald-400 mb-2 font-bold">
                   {content.label}
                 </p>
-                <h2 className="text-2xl font-bold text-white tracking-tight">
+                <h2 className="text-2xl font-bold dark:text-white text-slate-900 tracking-tight">
                   {content.title}
                 </h2>
               </div>
               <button
                 onClick={onClose}
-                className="text-gray-500 hover:text-white transition-colors p-1"
+                className="dark:text-gray-400 text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors p-1"
                 aria-label="Close modal"
               >
                 <X size={24} />

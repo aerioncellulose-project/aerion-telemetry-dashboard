@@ -23,27 +23,27 @@ const accentMap = {
   emerald: {
     border: 'border-emerald-500/30',
     bg: 'bg-emerald-500/10',
-    text: 'text-emerald-400',
+    text: 'text-emerald-500 dark:text-emerald-400',
   },
   sky: {
     border: 'border-sky-500/30',
     bg: 'bg-sky-500/10',
-    text: 'text-sky-400',
+    text: 'text-sky-500 dark:text-sky-400',
   },
   amber: {
     border: 'border-amber-500/30',
     bg: 'bg-amber-500/10',
-    text: 'text-amber-400',
+    text: 'text-amber-500 dark:text-amber-400',
   },
   orange: {
     border: 'border-orange-500/30',
     bg: 'bg-orange-500/10',
-    text: 'text-orange-400',
+    text: 'text-orange-500 dark:text-orange-400',
   },
   red: {
     border: 'border-red-500/30',
     bg: 'bg-red-500/10',
-    text: 'text-red-400',
+    text: 'text-red-500 dark:text-red-400',
   },
 };
 
@@ -54,7 +54,7 @@ export default function StatCard({
   value,
   unit,
   accentColor,
-  valueClassName = 'text-white',
+  valueClassName = 'dark:text-white text-slate-900',
   onClick,
   children,
 }: StatCardProps) {
@@ -77,13 +77,15 @@ export default function StatCard({
         >
           {icon}
         </div>
-        <span className="text-xs font-mono text-gray-500 uppercase">{tag}</span>
+        <span className="text-xs font-mono dark:text-gray-500 text-slate-500 uppercase">{tag}</span>
       </div>
 
       {/* Label */}
-      <p className="text-[10px] font-mono uppercase tracking-widest text-gray-500 mb-2">
-        {label}
-      </p>
+      {label && (
+        <p className="text-[10px] font-mono uppercase tracking-widest dark:text-gray-500 text-slate-500 mb-2">
+          {label}
+        </p>
+      )}
 
       {/* Value with Odometer */}
       {!children && (
@@ -91,13 +93,13 @@ export default function StatCard({
           className={`text-3xl font-bold font-mono tracking-tight flex items-center ${valueClassName}`}
         >
           <RollingOdometer value={value} />
-          <span className="text-sm text-gray-500 font-display font-normal unit-text">
+          <span className="text-sm dark:text-gray-500 text-slate-500 font-display font-normal unit-text">
             {unit}
           </span>
         </h3>
       )}
 
-      {/* Custom children (for environment card dual layout, battery bar, etc.) */}
+      {/* Custom children */}
       {children}
     </div>
   );

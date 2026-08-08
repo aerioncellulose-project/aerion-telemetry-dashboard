@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { motion } from 'framer-motion';
 import {
   LayoutDashboard,
@@ -13,9 +14,7 @@ import SystemUptime from './SystemUptime';
 import LiveIndicator from './LiveIndicator';
 
 // ============================================================================
-//  Navbar - Horizontal Top Bar with Framer Motion sliding pill
-//  Desktop: Full top bar with centered nav + sliding pill animation
-//  Mobile: Simplified top bar + fixed bottom navigation
+//  Navbar - Horizontal Top Bar with Official SVG Logo & Light/Dark styling
 // ============================================================================
 
 interface NavbarProps {
@@ -39,18 +38,23 @@ export default function Navbar({ activePage, onPageChange, connectionStatus }: N
           DESKTOP TOP BAR (hidden on mobile)
           ============================================ */}
       <header className="fixed top-0 left-0 right-0 z-50 hidden md:block">
-        <div className="bg-[#080808]/80 backdrop-blur-xl border-b border-white/5">
+        <div className="bg-[#080808]/85 dark:bg-[#080808]/85 bg-white/85 backdrop-blur-xl border-b border-white/5 dark:border-white/5 border-slate-200/80 transition-colors duration-300">
           <div className="max-w-[1600px] mx-auto px-6 h-16 flex items-center justify-between">
-            {/* LEFT: Logo + Title */}
-            <div className="flex items-center gap-3">
-              <div className="w-9 h-9 bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center rounded-xl text-white font-bold text-lg shadow-lg shadow-emerald-500/30">
-                A
-              </div>
+            {/* LEFT: Official Logo + Title */}
+            <div className="flex items-center gap-3 cursor-pointer" onClick={() => onPageChange('dashboard')}>
+              <Image
+                src="/logo.svg"
+                alt="AERION Logo"
+                width={40}
+                height={40}
+                priority
+                className="w-10 h-10 object-contain drop-shadow-[0_0_10px_rgba(16,185,129,0.5)] transition-transform hover:scale-105"
+              />
               <div>
-                <h1 className="text-sm font-bold tracking-tight gradient-text leading-none">
+                <h1 className="text-base font-bold tracking-tight gradient-text leading-none">
                   AERION
                 </h1>
-                <p className="text-[9px] font-mono text-gray-500 uppercase tracking-widest">
+                <p className="text-[9px] font-mono text-gray-400 dark:text-gray-500 uppercase tracking-widest mt-0.5">
                   Live Telemetry
                 </p>
               </div>
@@ -69,7 +73,11 @@ export default function Navbar({ activePage, onPageChange, connectionStatus }: N
                     className={`
                       relative px-4 py-2 rounded-xl text-sm font-medium
                       transition-colors duration-200 z-10
-                      ${isActive ? 'text-emerald-400' : 'text-gray-400 hover:text-gray-200'}
+                      ${
+                        isActive
+                          ? 'text-emerald-500 dark:text-emerald-400'
+                          : 'text-slate-600 dark:text-gray-400 hover:text-slate-900 dark:hover:text-gray-200'
+                      }
                     `}
                   >
                     {/* Sliding pill background */}
@@ -106,16 +114,21 @@ export default function Navbar({ activePage, onPageChange, connectionStatus }: N
           MOBILE TOP BAR (visible only on mobile)
           ============================================ */}
       <header className="fixed top-0 left-0 right-0 z-50 md:hidden">
-        <div className="bg-[#080808]/90 backdrop-blur-xl border-b border-white/5">
+        <div className="bg-[#080808]/90 dark:bg-[#080808]/90 bg-white/90 backdrop-blur-xl border-b border-white/5 dark:border-white/5 border-slate-200/80 transition-colors duration-300">
           <div className="px-4 h-14 flex items-center justify-between">
             {/* Logo + Title */}
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-gradient-to-br from-emerald-400 to-emerald-600 flex items-center justify-center rounded-lg text-white font-bold text-sm shadow-lg shadow-emerald-500/30">
-                A
-              </div>
+            <div className="flex items-center gap-2" onClick={() => onPageChange('dashboard')}>
+              <Image
+                src="/logo.svg"
+                alt="AERION Logo"
+                width={32}
+                height={32}
+                priority
+                className="w-8 h-8 object-contain drop-shadow-[0_0_8px_rgba(16,185,129,0.5)]"
+              />
               <div>
                 <h1 className="text-sm font-bold gradient-text leading-none">AERION</h1>
-                <p className="text-[8px] font-mono text-gray-500 uppercase tracking-widest">
+                <p className="text-[8px] font-mono text-gray-400 dark:text-gray-500 uppercase tracking-widest">
                   Command Center
                 </p>
               </div>
@@ -131,7 +144,7 @@ export default function Navbar({ activePage, onPageChange, connectionStatus }: N
           MOBILE BOTTOM NAV (visible only on mobile)
           ============================================ */}
       <nav className="fixed bottom-0 left-0 right-0 z-50 md:hidden">
-        <div className="bg-[#080808]/90 backdrop-blur-xl border-t border-white/5 bottom-nav-safe">
+        <div className="bg-[#080808]/90 dark:bg-[#080808]/90 bg-white/90 backdrop-blur-xl border-t border-white/5 dark:border-white/5 border-slate-200/80 bottom-nav-safe transition-colors duration-300">
           <div className="flex items-center justify-around h-16">
             {navItems.map((item) => {
               const Icon = item.icon;
@@ -160,12 +173,18 @@ export default function Navbar({ activePage, onPageChange, connectionStatus }: N
                   >
                     <Icon
                       size={20}
-                      className={isActive ? 'text-emerald-400' : 'text-gray-500'}
+                      className={
+                        isActive
+                          ? 'text-emerald-500 dark:text-emerald-400'
+                          : 'text-slate-400 dark:text-gray-500'
+                      }
                     />
                   </motion.div>
                   <span
                     className={`text-[10px] font-medium ${
-                      isActive ? 'text-emerald-400' : 'text-gray-500'
+                      isActive
+                        ? 'text-emerald-500 dark:text-emerald-400'
+                        : 'text-slate-400 dark:text-gray-500'
                     }`}
                   >
                     {item.label}

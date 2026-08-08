@@ -3,7 +3,7 @@ import { Outfit, Space_Mono } from 'next/font/google';
 import './globals.css';
 
 // ============================================================================
-//  AERION Command Center - Root Layout
+//  AERION Command Center - Root Layout with Vector Icon
 // ============================================================================
 
 const outfit = Outfit({
@@ -21,10 +21,18 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'AERION | Command Center',
+  title: 'AERION | Live Telemetry Command Center',
   description:
     'Live telemetry dashboard for AERION — Atmospheric Energy Recovery through Ionic-Engineered Cellulose. Real-time monitoring of energy harvesting, environmental sensors, and system status.',
   keywords: ['AERION', 'telemetry', 'IoT', 'energy harvesting', 'ESP32', 'dashboard'],
+  icons: {
+    icon: [
+      { url: '/logo.svg', type: 'image/svg+xml' },
+      { url: '/favicon.ico' },
+    ],
+    shortcut: '/logo.svg',
+    apple: '/logo.svg',
+  },
 };
 
 export default function RootLayout({
@@ -33,12 +41,16 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" className="dark scroll-smooth">
+      <head>
+        <link rel="icon" href="/logo.svg" type="image/svg+xml" />
+        <link rel="apple-touch-icon" href="/logo.svg" />
+      </head>
       <body
         className={`
           ${outfit.variable} ${spaceMono.variable}
           font-display
-          bg-[#050507] text-[#f1f5f9]
+          bg-[var(--color-bg)] text-[var(--color-text)]
           overflow-x-hidden
           antialiased
         `}
